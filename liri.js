@@ -5,9 +5,10 @@ var axios = require("axios");
 var moment = require("moment");
 var spotify = new Spotify(keys.spotify);
 var command = process.argv[2];
+var nodeArgs = process.argv;
 switch(command) {
     case 'concert-this':
-        var nodeArgs = process.argv;
+        //var nodeArgs = process.argv;
         console.log("nodeArgs: " + nodeArgs);
         var artistName = nodeArgs.slice(3).join(" ");
         /*for(var i = 3; i < nodeArgs.length; i++) {
@@ -20,6 +21,12 @@ switch(command) {
         //var artistName = process.argv[3];
         console.log("artist to search for: " + artistName);
         searchBandsInTown(artistName);
+        break;
+    case 'spotify-this-song':
+        console.log("nodeArgs: " + nodeArgs);
+        var songInput = nodeArgs.slice(3).join(" ");
+        console.log("song to search for: " + songInput);
+        spotifyThisSong(songInput);
         break;
 }
 
@@ -49,4 +56,22 @@ function searchBandsInTown(artist) {
         console.log(error.config);
     });
 
+}
+
+function spotifyThisSong(song) {
+    if(!song) {
+        song = "The Sign Ace of Base";
+    }
+
+    spotify.search({type: "track", query: song}, function(err, data) {
+        if(err) {
+            console.log(err);
+        }
+
+        var songInfo = data.tracks.items;
+        console.log("Artist(s): " + songInfo[0].artists[0].name);
+        console.log("Song Name: " + songInfo[0].name);
+        console.log("Preview Link (Spotify): " + songInfo[0].preview_url);
+        console.log("Album: " + songInfo[0].album.name);
+    });
 }
