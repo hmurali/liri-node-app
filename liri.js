@@ -93,6 +93,7 @@ function movieThis(movie) {
         movie = "Mr Nobody";
         queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=full&apikey=trilogy";
         console.log("Mr. Nobody query url: " + queryURL);
+        console.log("If you haven't watched Mr. Nobody, then you should: http://www.imdb.com/title/tt0485947/" + "\n" + "It's on Netflix!");
     }
     axios.get(queryURL).then(function(response) {
         console.log("Title of the movie: " + response.data.Title);
