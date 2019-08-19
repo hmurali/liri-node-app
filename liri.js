@@ -10,7 +10,7 @@ var nodeArgs = process.argv;
 switch(command) {
     case 'concert-this':
         //var nodeArgs = process.argv;
-        console.log("nodeArgs: " + nodeArgs);
+        //console.log("nodeArgs: " + nodeArgs);
         var artistName = nodeArgs.slice(3).join(" ");
         /*for(var i = 3; i < nodeArgs.length; i++) {
             if(i > 3 && i < nodeArgs.length) {
@@ -20,19 +20,19 @@ switch(command) {
             }
         } */
         //var artistName = process.argv[3];
-        console.log("artist to search for: " + artistName);
+        //console.log("artist to search for: " + artistName);
         searchBandsInTown(artistName);
         break;
     case 'spotify-this-song':
-        console.log("nodeArgs: " + nodeArgs);
+        //console.log("nodeArgs: " + nodeArgs);
         var songInput = nodeArgs.slice(3).join(" ");
-        console.log("song to search for: " + songInput);
+        //console.log("song to search for: " + songInput);
         spotifyThisSong(songInput);
         break;
     case 'movie-this':
-        console.log("nodeArgs: " + nodeArgs);
+        //console.log("nodeArgs: " + nodeArgs);
         var movieInput = nodeArgs.slice(3).join(" ");
-        console.log("movie to search for: " + movieInput);
+        //console.log("movie to search for: " + movieInput);
         movieThis(movieInput);
         break;
     case 'do-what-it-says':
@@ -42,7 +42,7 @@ switch(command) {
 
 function searchBandsInTown(artist) {
     var queryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
-    console.log("queryURL is: " + queryURL);
+    //console.log("queryURL is: " + queryURL);
     axios.get(queryURL).then(function(response) {
         for(var i = 0; i < response.data.length; i++) {
             console.log("Name of the venue: " + response.data[i].venue.name);
@@ -88,7 +88,7 @@ function spotifyThisSong(song) {
 
 function movieThis(movie) {
     var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=full&apikey=trilogy";
-    console.log("queryURL is: " + queryURL);
+    //console.log("queryURL is: " + queryURL);
     if(!movie) {
         movie = "Mr Nobody";
         queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=full&apikey=trilogy";
@@ -128,7 +128,7 @@ function simonSays(){
             return console.log(error);
         }
 
-        console.log(data);
+        //console.log(data);
         var dataArr = data.split(",");
         spotifyThisSong(dataArr[1]);
     })
