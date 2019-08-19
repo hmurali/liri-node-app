@@ -19,9 +19,15 @@ Using `.gitignore`, API keys are stored locally and kept safe through abstractio
 ## Commands
 1. `node liri.js concert-this <artist/band-name>`
     1. This command searches the Bands in Town Artist Events API through Axios (`"https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"`) and returns events the artist is appearing at or in the near future. It includes `Name of the venue: `, `Venue Location: `, and `Date of the Event: `.
+    ![Concert This: Shawn Mendes](https://github.com/hmurali/liri-node-app/blob/master/screenshots/concert-this-shawn-mendes.PNG)
 2. `node liri.js spotify-this-song <song-name>`
     1. This command searches the Spotify Web API that runs on Node.js (`spotify.search({type: "track", query: song}, function(err, data)`) and returns information about the song entered in by the user. It includes `Artist(s): `, `Song Name: `, `Preview Link (Spotify): `, and `Album: `. If no song is entered, the API automatically searches "The Sign" by Ace of Base for the user.
+    ![Spotify This Song: Default Output](https://github.com/hmurali/liri-node-app/blob/master/screenshots/spotify-this-song-default-output.PNG)
+    ![Spotify This Song: It Had To Be You (Kathie Lee Gifford)](https://github.com/hmurali/liri-node-app/blob/master/screenshots/spotify-this-song-it-had-to-be-you-kathie-lee-gifford.PNG)
 3. `node liri.js movie-this <movie-name>`
     1. This command searches the OMDB API through Axios (`"http://www.omdbapi.com/?t=" + movie + "&y=&plot=full&apikey=trilogy"`) and returns information about the movie the user input. It includes `Title of the movie: `, `Year the movie came out: `, `IMDB rating of the movie: `, `Rotten Tomatoes Rating of the movie: `, `Country where the movie was produced: `, `Language of the movie: `, `Plot of the movie: `, and `Actors in the movie: `. If no movie is entered, the API automatically searches Mr. Nobody for the user, as well as letting them know that they should check it out, notifying the user that it's on Netflix, and providing a link to the IMDB page for the movie.
+    ![Movie This: Default Output](https://github.com/hmurali/liri-node-app/blob/master/screenshots/movie-this-default-output.PNG)
+    ![Movie This: La La Land](https://github.com/hmurali/liri-node-app/blob/master/screenshots/movie-this-la-la-land.PNG)
 4. `node liri.js do-what-it-says`
     1. Using the `fs` Node package, LIRI accesses the text in random.txt and uses that to call one of LIRI's commands for the user. It runs `spotify-this-song` for "I Want it That Way" by the Backstreet Boys, but can also be modified to search for a specific movie for movie-this, or a specific artist for concert-this.
+    ![Do What It Says](https://github.com/hmurali/liri-node-app/blob/master/screenshots/do-what-it-says.PNG)
